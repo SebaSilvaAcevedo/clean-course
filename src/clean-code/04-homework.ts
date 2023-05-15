@@ -7,30 +7,41 @@
         
         const redFruits: string[] = ['manzana','cereza','ciruela']
 
-        if ( redFruits.includes(fruit) ) return true;
+        return redFruits.includes(fruit)
 
-        return false;
     }
 
 
 
     // Simplificar esta función
     // switch? Object literal? validar posibles colores
-    function getFruitsByColor( color: string ): string[] {
+    type FruitColor = 'red'|'yellow'|'purple';
+    function getFruitsByColor( color: FruitColor ): string[] {
 
+        const fruitsByColor = {
+            red: ['manzana','fresa'],
+            yellow: ['piña','banana'],
+            purple: ['moras','uvas']
+        };
 
-        switch (color) {
-            case 'red':
-                return ['manzana','fresa'];
+        if (Object.keys( fruitsByColor ).includes(color)) 
+            throw Error('the color must be: red, yellow, purple');
+        
+        return fruitsByColor[color];
 
-            case 'yellow':
-                return ['piña','banana'];
+        // switch (color) {
+        //     case 'red':
+        //         return ['manzana','fresa'];
+
+        //     case 'yellow':
+        //         return ['piña','banana'];
             
-            case 'purple':
-                return ['moras','uvas'];
-            default:
-                throw Error('the color must be: red, yellow, purple');
-        }
+        //     case 'purple':
+        //         return ['moras','uvas'];
+        //     default:
+        //         throw Error('the color must be: red, yellow, purple');
+        // }
+
     }
 
     // Simplificar esta función
